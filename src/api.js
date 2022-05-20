@@ -11,6 +11,7 @@ export const extractLocations = (events) => {
 const getToken = async (code) => {
     const encodeCode = encodeURIComponent(code);
     const { access_token } = await fetch(
+        // eslint-disable-next-line
         'https://n7s29x0hj3.execute-api.eu-west-2.amazonaws.com/dev/api/token' + '/' + encodeCode
     )
     .then((res) => {
@@ -25,6 +26,7 @@ const getToken = async (code) => {
 
 export const checkToken = async(accessToken) => {
     const result = await fetch(
+        // eslint-disable-next-line
         `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`)
         .then((res) => res.json())
         .catch((error) => error.json());
@@ -43,6 +45,7 @@ export const getEvents = async () => {
 
     if(token) {
         removeQuery();
+        // eslint-disable-next-line
         const url = 'https://n7s29x0hj3.execute-api.eu-west-2.amazonaws.com/dev/api/get-events' + '/' + token;
         const result = await axios.get(url);
         if (result.data) {

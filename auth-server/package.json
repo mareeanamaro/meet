@@ -8,9 +8,7 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {    
-    "googleapis": "^59.0.0"},
-  "devDependencies": {
-
+  "dependencies": {
+    "googleapis": "^59.0.0"
   }
 }
