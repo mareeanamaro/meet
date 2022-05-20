@@ -44,7 +44,7 @@ class App extends Component {
     getEvents().then((events) => {
       if (eventCount !== undefined && this.mounted) {
         this.setState({
-          numberOfEvents: this.state.numberOfEvents,
+          numberOfEvents: eventCount,
         })
       }
       let locationEvents =
@@ -53,7 +53,6 @@ class App extends Component {
           : events.filter((event) => event.location === location)
       let shortEventsList = locationEvents.slice(0, this.state.numberOfEvents)
        if(this.mounted) {this.setState({
-          numberOfEvents: eventCount,
           events: shortEventsList
         })};
         });
@@ -63,13 +62,13 @@ class App extends Component {
   return (
 
     <Container className='App'>
-      <Row>
-
-     <Col> <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/></Col>
-     <Col><NumberOfEvents updateNumberOfEvents={this.updateNumberOfEvents}/></Col>
-
-      <Col><h1>Upcoming Career Foundry Events</h1></Col>
       
+        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/> 
+        <NumberOfEvents eventCount={this.state.numberOfEvents} updateNumberOfEvents={this.updateNumberOfEvents}/>
+     
+     
+     <Row>
+      <Col><h1>Upcoming Career Foundry Events</h1></Col>
       <EventList events={this.state.events}/>
     </Row>
     </Container>
