@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card } from 'react-bootstrap';
+import './App.css';
 
 class Event extends Component {
 
@@ -23,25 +23,29 @@ class Event extends Component {
         const { collapsed } = this.state;
 
         return (
-            <Card className='event '>
-            <Card.Title className='title'>{event.summary}</Card.Title>
-            <Card.Body className='startDateTime'>{event.start.dateTime}</Card.Body>
-            <Card.Body className='location'>{event.location}</Card.Body>
-            <Button className={`${collapsed ? 'show' : 'hide'}-details`}
+            <div>
+            <div>
+            <div className='event'>
+            <div className='title'>{event.summary}</div>
+            <div className='startDateTime'>{event.start.dateTime}</div>
+            <div className='location'>{event.location}</div>
+            <button className={`${collapsed ? 'show' : 'hide'}-details`}
                     onClick={this.handleClick}
                 >{collapsed? 'Show Details' : 'Hide Details'}
-                </Button>
+                </button>
 
             {!collapsed && (
             <div className="extra-details">
-            <Card.Body>About the event:</Card.Body>
-            <a href={event.htmlLink} rel="noreferrer" target="_blank">
+            <div>About the event:</div>
+            <a className='linkColor' href={event.htmlLink} rel="noreferrer" target="_blank">
               See details on Google Calendar
             </a>
-            <Card.Body className="event-description">{event.description}</Card.Body>
+            <div className="event-description">{event.description}</div>
           </div>
         )}
-        </Card>
+        </div>
+        </div>
+        </div>
         )
     }
 }

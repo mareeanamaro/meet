@@ -1,6 +1,7 @@
 import {Component} from 'react';
 import './App.css';
 import './nprogress.css';
+
 import { Container, Row, Col } from 'react-bootstrap';
 
 import EventList from './EventList';
@@ -60,18 +61,34 @@ class App extends Component {
 
   render() {
   return (
-
-    <Container className='App'>
-      
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/> 
-        <NumberOfEvents eventCount={this.state.numberOfEvents} updateNumberOfEvents={this.updateNumberOfEvents}/>
-     
-     
-     <Row>
-      <Col><h1>Upcoming Career Foundry Events</h1></Col>
-      <EventList events={this.state.events}/>
+<>
+    <Container className='App main-view justify-content-md-center'>
+      <Row>
+        <Col>
+          <h1>Upcoming Career Foundry Events</h1>
+          <p>Search for web development events in your city!</p>
+        </Col>
     </Row>
+       <Row>
+          <Col className='center-content'>
+            <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
+          </Col>
+        </Row> 
+
+        <Row>
+          <Col className='center-content'>
+            <NumberOfEvents eventCount={this.state.numberOfEvents} updateNumberOfEvents={this.updateNumberOfEvents}/>
+          </Col>
+         </Row>
     </Container>
+    <Container fluid>
+        <Row className='justify-content-md-center'>
+        <Col xs={12} md={8}>
+        <EventList events={this.state.events}/>
+        </Col>
+        </Row>
+        </Container>
+    </>
     );
   }
 }

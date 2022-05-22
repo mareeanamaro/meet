@@ -34,17 +34,17 @@ class NumberOfEvents extends Component {
 
     render() {
         return (
-            <Row className='numberOfEvents'>
+            <div className='numberOfEvents'>
                
-                <Col><input type='number'
+                <input type='number'
                 className='number-of-events'
                 value={this.props.eventCount} 
                 onChange={(event) => this.handleChange(event)}>
-                </input></Col>
-                <Col><ErrorAlert id='errorAlert' text={this.state.errorText} /></Col>
-                <Col><WarningAlert id='warningAlert' text={this.state.warningText} /></Col>
+                </input>
+                <ErrorAlert id='errorAlert' text={this.state.errorText} />
+                {/* <WarningAlert id='warningAlert' text={this.state.warningText} /> */}
                 
-            </Row>
+            </div>
         )
       }
 }
