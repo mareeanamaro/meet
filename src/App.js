@@ -7,19 +7,30 @@ import { Container, Row, Col } from 'react-bootstrap';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
+import WelcomeScreen from './WelcomeScreen';
 
-import { getEvents, extractLocations } from './api';
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
+import { OfflineAlert } from './Alert.js';
 
 class App extends Component {
   state = {
     locations: [],
     numberOfEvents: 32,
     events: [],
-    location: 'all'
+    location: 'all',
+    offlineText: '',
+    showWelcomeScreen: undefined
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken).error ? false : true);
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get('code');
+    this.setState({showWelcomeScreen: !code || isTokenValid});
+    
+    if ((code || isTokenValid) && this.mounted) {
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({
@@ -27,6 +38,18 @@ class App extends Component {
           locations: extractLocations(events) });
       }
     });
+  }
+  
+    if (!navigator.onLine) {
+      this.setState({
+        offlineText:
+        'You are offline. The displayed events may not be up to date.'
+      });
+    } else {
+      this.setState({
+        offlineText: ''
+      });
+    }
   }
   
   componentWillUnmount(){
@@ -60,26 +83,33 @@ class App extends Component {
   }
 
   render() {
+
+    if (this.state.showWelcomeScreen === undefined) return <Container
+    className="App" />
+ 
   return (
 <>
     <Container className='App main-view justify-content-md-center'>
       <Row>
         <Col>
-          <h1>Upcoming Career Foundry Events</h1>
+          <h1>Meet App</h1>
           <p>Search for web development events in your city!</p>
         </Col>
     </Row>
        <Row>
-          <Col className='center-content'>
+          <Col md={4}><OfflineAlert text={this.state.offlineText}/></Col>
+          <Col md={4} className='mt-3'>
             <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
           </Col>
-        </Row> 
-
-        <Row>
-          <Col className='center-content'>
+          <Col md={4} className=''>
             <NumberOfEvents eventCount={this.state.numberOfEvents} updateNumberOfEvents={this.updateNumberOfEvents}/>
           </Col>
          </Row>
+    </Container>
+    <Container>
+      <Row>
+        <Col></Col>
+      </Row>
     </Container>
     <Container fluid>
         <Row className='justify-content-md-center'>
@@ -87,6 +117,8 @@ class App extends Component {
         <EventList events={this.state.events}/>
         </Col>
         </Row>
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+                       getAccessToken={() => { getAccessToken() }} />
         </Container>
     </>
     );

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { InfoAlert } from './Alert.js';
-import { Container, Row } from 'react-bootstrap';
 
 class CitySearch extends Component {
 
