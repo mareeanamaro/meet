@@ -23,11 +23,3 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-manifest*
-asset-manifest*
-robots*
-
-..gitignore 2*
-.gitignore 2
-App.test 2*
-setupTests 2*
