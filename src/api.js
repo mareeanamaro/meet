@@ -83,8 +83,8 @@ const removeQuery = () => {
 export const getAccessToken = async () => {
     //first check local storage for an access token
     const accessToken = localStorage.getItem('access_token');
-
     const tokenCheck = accessToken && (await checkToken(accessToken));
+    
     // if there is no valid token, it checks for a code
     if (!accessToken || tokenCheck.error) {
         await localStorage.removeItem('access_token');
