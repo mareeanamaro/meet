@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)http://localhost:3000/meet -->
+<html lang="en" class=" "><link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><style lang="en" type="text/css" id="dark-mode-custom-style"></style><style lang="en" type="text/css" id="dark-mode-native-style"></style><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="icon" href="http://localhost:3000/meet/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Web site created using create-react-app">
+    <meta name="google-site-verification" content="F7UuN3diBwgPJ4BOhJ6Ywb7lNi4Zs8l6FXZnhmj_NMk">
+    <link rel="manifest" href="http://localhost:3000/meet/manifest.json">
+    <link rel="apple-touch-icon" href="http://localhost:3000/meet/meet-app-192.png">
+    
+    <title>Meet App - Upcoming Career Foundry Trainings</title>
+    <link rel="stylesheet" href="./Meet App - Upcoming Career Foundry Trainings_files/bootstrap.min.css">
+  <script defer="" src="./Meet App - Upcoming Career Foundry Trainings_files/bundle.js"></script><style>body {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F5EFD0;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9pbmRleC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxTQUFTO0VBQ1Qsa0NBQWtDO0VBQ2xDLG1DQUFtQztFQUNuQyxrQ0FBa0M7RUFDbEMseUJBQXlCO0FBQzNCIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIG1hcmdpbjogMDtcbiAgZm9udC1mYW1pbHk6ICdSYWxld2F5Jywgc2Fucy1zZXJpZjtcbiAgLXdlYmtpdC1mb250LXNtb290aGluZzogYW50aWFsaWFzZWQ7XG4gIC1tb3otb3N4LWZvbnQtc21vb3RoaW5nOiBncmF5c2NhbGU7XG4gIGJhY2tncm91bmQtY29sb3I6ICNGNUVGRDA7XG59XG4iXSwic291cmNlUm9vdCI6IiJ9 */</style><style>@import url(https://fonts.googleapis.com/css2?family=Radio+Canada:wght@400;600&display=swap);</style><style>body {
+  margin: 2rem;
+  font-family: 'Radio Canada', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #B85353;
+}
+
+.App {
+  text-align: center;
+  padding: 2% 5%;
+}
+
+.App * {
+  box-sizing: border-box;
+}
+
+h1 {
+  color: #EEB3B3;
+  text-shadow: 1px 1px 1px rgba(246, 240, 243, 0.71);
+  font-size: 3rem;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+p {
+  margin: 5px 0;
+  color: white;
+}
+
+.display-none {
+  display: none;
+}
+.showSuggestions {
+  display: block;
+}
+
+input[type="text"],
+input[type="number"] {
+  padding: 8px 6px 8px 10px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  line-height: 20px;
+  align-self: center;
+  height: 38px;
+  margin: 5px;
+}
+
+input[type="number"] {
+
+  width: 5rem;
+  text-align: center;
+}
+
+.city {
+  width: 250px;
+}
+
+.CitySearch {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 300px;
+  max-width: 300px;
+  height: 5rem;
+  margin: auto;
+  position: relative;
+}
+
+.suggestions {
+  width: 250px;
+  position: absolute;
+  z-index: 2;
+  align-self: center;
+  margin: 0;
+  top: 43px;
+  font-size: 14px;
+  box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
+}
+
+.suggestions > li {
+  text-align: left;
+  padding: 8px 6px 8px 10px;
+  background-color: #eee;
+  cursor: default;
+}
+
+.suggestions > li:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.suggestions > li:hover {
+  background-color: #bcdcdb;
+}
+
+.event {
+  padding: 10px 10px 35px;
+  margin-bottom: 10px;
+  text-align: left;
+  border: 1rem solid #EEB3B3;
+  border-radius: 10px;
+  position: relative;
+  color:white;
+}
+
+.event > .title {
+  font-weight: 600;
+}
+
+.details-btn {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.group-name {
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.going,
+.visibility {
+  font-style: italic;
+}
+
+.description {
+  overflow-x: hidden;
+}
+
+.numberOfEvents {
+  width: 300px;
+  margin: 20px auto;
+  height: 5rem;
+  text-align: center;
+}
+
+.button-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.linkColor:a {
+  color: 00FFFF !important
+}
+
+.data-vis-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.data-vis-wrapper .recharts-responsive-container {
+  min-width: 100%;
+  display: flex;
+}
+.recharts-surface {
+  overflow: visible;
+}
+
+.login-button {
+  color: #494949;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #ffffff;
+  padding: 20px;
+  border: 4px solid #494949;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+  min-width: 10rem;
+  margin: 1rem;
+}
+
+.google-btn {
+  width: 184px;
+  height: 42px;
+  margin: 1rem;
+  background-color: #4285f4;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.google-btn:hover {
+  box-shadow: 0 0 6px #4285f4;
+}
+.google-btn:active {
+  background: #1669f2;
+}
+.google-icon-wrapper {
+  position: absolute;
+  margin-top: 1px;
+  margin-left: 1px;
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: #fff;
+}
+.google-icon {
+  position: absolute;
+  margin-top: 11px;
+  margin-left: -8px;
+  width: 18px;
+  height: 18px;
+}
+.btn-text {
+  float: right;
+  margin: 11px 11px 0 0;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-family: "Roboto";
+}
+
+
+
+@media only screen and (min-width: 992px) {
+  .data-vis-wrapper {
+    flex-direction: row;
+  }
+  .data-vis-wrapper .recharts-responsive-container {
+    flex-basis: 50%;
+    max-width: 50%;
+    min-width: auto;
+    margin: 0 auto;
+  }
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9BcHAuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ0UsWUFBWTtFQUNaLHVDQUF1QztFQUN2QyxtQ0FBbUM7RUFDbkMsa0NBQWtDO0VBQ2xDLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixjQUFjO0FBQ2hCOztBQUVBO0VBQ0Usc0JBQXNCO0FBQ3hCOztBQUVBO0VBQ0UsY0FBYztFQUNkLGtEQUFrRDtFQUNsRCxlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsVUFBVTtFQUNWLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGFBQWE7RUFDYixZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxhQUFhO0FBQ2Y7QUFDQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7O0VBRUUseUJBQXlCO0VBQ3pCLGtCQUFrQjtFQUNsQixhQUFhO0VBQ2Isc0JBQXNCO0VBQ3RCLGVBQWU7RUFDZixpQkFBaUI7RUFDakIsa0JBQWtCO0VBQ2xCLFlBQVk7RUFDWixXQUFXO0FBQ2I7O0FBRUE7O0VBRUUsV0FBVztFQUNYLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLFlBQVk7QUFDZDs7QUFFQTtFQUNFLGFBQWE7RUFDYixzQkFBc0I7RUFDdEIsaUJBQWlCO0VBQ2pCLGdCQUFnQjtFQUNoQixZQUFZO0VBQ1osWUFBWTtFQUNaLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLFlBQVk7RUFDWixrQkFBa0I7RUFDbEIsVUFBVTtFQUNWLGtCQUFrQjtFQUNsQixTQUFTO0VBQ1QsU0FBUztFQUNULGVBQWU7RUFDZixvREFBb0Q7QUFDdEQ7O0FBRUE7RUFDRSxnQkFBZ0I7RUFDaEIseUJBQXlCO0VBQ3pCLHNCQUFzQjtFQUN0QixlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsOEJBQThCO0VBQzlCLCtCQUErQjtBQUNqQzs7QUFFQTtFQUNFLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLHVCQUF1QjtFQUN2QixtQkFBbUI7RUFDbkIsZ0JBQWdCO0VBQ2hCLDBCQUEwQjtFQUMxQixtQkFBbUI7RUFDbkIsa0JBQWtCO0VBQ2xCLFdBQVc7QUFDYjs7QUFFQTtFQUNFLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixVQUFVO0VBQ1YsV0FBVztFQUNYLGdCQUFnQjtFQUNoQixrQkFBa0I7RUFDbEIsYUFBYTtFQUNiLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UseUJBQXlCO0VBQ3pCLGVBQWU7QUFDakI7O0FBRUE7O0VBRUUsa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsWUFBWTtFQUNaLGlCQUFpQjtFQUNqQixZQUFZO0VBQ1osa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsYUFBYTtFQUNiLGtDQUFrQztFQUNsQyxjQUFjO0VBQ2QsYUFBYTtFQUNiLHVCQUF1QjtBQUN6Qjs7QUFFQTtFQUNFO0FBQ0Y7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsbUJBQW1CO0VBQ25CLHNCQUFzQjtBQUN4QjtBQUNBO0VBQ0UsZUFBZTtFQUNmLGFBQWE7QUFDZjtBQUNBO0VBQ0UsaUJBQWlCO0FBQ25COztBQUVBO0VBQ0UsY0FBYztFQUNkLHlCQUF5QjtFQUN6QixxQkFBcUI7RUFDckIsbUJBQW1CO0VBQ25CLGFBQWE7RUFDYix5QkFBeUI7RUFDekIscUJBQXFCO0VBQ3JCLDRCQUE0QjtFQUM1QixnQkFBZ0I7RUFDaEIsWUFBWTtBQUNkOztBQUVBO0VBQ0UsWUFBWTtFQUNaLFlBQVk7RUFDWixZQUFZO0VBQ1oseUJBQXlCO0VBQ3pCLGtCQUFrQjtFQUNsQiwyQ0FBMkM7QUFDN0M7QUFDQTtFQUNFLDJCQUEyQjtBQUM3QjtBQUNBO0VBQ0UsbUJBQW1CO0FBQ3JCO0FBQ0E7RUFDRSxrQkFBa0I7RUFDbEIsZUFBZTtFQUNmLGdCQUFnQjtFQUNoQixXQUFXO0VBQ1gsWUFBWTtFQUNaLGtCQUFrQjtFQUNsQixzQkFBc0I7QUFDeEI7QUFDQTtFQUNFLGtCQUFrQjtFQUNsQixnQkFBZ0I7RUFDaEIsaUJBQWlCO0VBQ2pCLFdBQVc7RUFDWCxZQUFZO0FBQ2Q7QUFDQTtFQUNFLFlBQVk7RUFDWixxQkFBcUI7RUFDckIsV0FBVztFQUNYLGVBQWU7RUFDZixxQkFBcUI7RUFDckIscUJBQXFCO0FBQ3ZCOzs7O0FBSUE7RUFDRTtJQUNFLG1CQUFtQjtFQUNyQjtFQUNBO0lBQ0UsZUFBZTtJQUNmLGNBQWM7SUFDZCxlQUFlO0lBQ2YsY0FBYztFQUNoQjtBQUNGIiwic291cmNlc0NvbnRlbnQiOlsiQGltcG9ydCB1cmwoJ2h0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzMj9mYW1pbHk9UmFkaW8rQ2FuYWRhOndnaHRANDAwOzYwMCZkaXNwbGF5PXN3YXAnKTtcblxuYm9keSB7XG4gIG1hcmdpbjogMnJlbTtcbiAgZm9udC1mYW1pbHk6ICdSYWRpbyBDYW5hZGEnLCBzYW5zLXNlcmlmO1xuICAtd2Via2l0LWZvbnQtc21vb3RoaW5nOiBhbnRpYWxpYXNlZDtcbiAgLW1vei1vc3gtZm9udC1zbW9vdGhpbmc6IGdyYXlzY2FsZTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI0I4NTM1Mztcbn1cblxuLkFwcCB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgcGFkZGluZzogMiUgNSU7XG59XG5cbi5BcHAgKiB7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG5cbmgxIHtcbiAgY29sb3I6ICNFRUIzQjM7XG4gIHRleHQtc2hhZG93OiAxcHggMXB4IDFweCByZ2JhKDI0NiwgMjQwLCAyNDMsIDAuNzEpO1xuICBmb250LXNpemU6IDNyZW07XG59XG5cbnVsIHtcbiAgcGFkZGluZzogMDtcbiAgbGlzdC1zdHlsZTogbm9uZTtcbn1cblxucCB7XG4gIG1hcmdpbjogNXB4IDA7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuLmRpc3BsYXktbm9uZSB7XG4gIGRpc3BsYXk6IG5vbmU7XG59XG4uc2hvd1N1Z2dlc3Rpb25zIHtcbiAgZGlzcGxheTogYmxvY2s7XG59XG5cbmlucHV0W3R5cGU9XCJ0ZXh0XCJdLFxuaW5wdXRbdHlwZT1cIm51bWJlclwiXSB7XG4gIHBhZGRpbmc6IDhweCA2cHggOHB4IDEwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgb3V0bGluZTogbm9uZTtcbiAgYm9yZGVyOiAxcHggc29saWQgI2NjYztcbiAgZm9udC1zaXplOiAxNHB4O1xuICBsaW5lLWhlaWdodDogMjBweDtcbiAgYWxpZ24tc2VsZjogY2VudGVyO1xuICBoZWlnaHQ6IDM4cHg7XG4gIG1hcmdpbjogNXB4O1xufVxuXG5pbnB1dFt0eXBlPVwibnVtYmVyXCJdIHtcblxuICB3aWR0aDogNXJlbTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uY2l0eSB7XG4gIHdpZHRoOiAyNTBweDtcbn1cblxuLkNpdHlTZWFyY2gge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBmbGV4LWJhc2lzOiAzMDBweDtcbiAgbWF4LXdpZHRoOiAzMDBweDtcbiAgaGVpZ2h0OiA1cmVtO1xuICBtYXJnaW46IGF1dG87XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbn1cblxuLnN1Z2dlc3Rpb25zIHtcbiAgd2lkdGg6IDI1MHB4O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHotaW5kZXg6IDI7XG4gIGFsaWduLXNlbGY6IGNlbnRlcjtcbiAgbWFyZ2luOiAwO1xuICB0b3A6IDQzcHg7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgYm94LXNoYWRvdzogMTBweCAxMHB4IDE2cHggLTEycHggcmdiYSgwLCAwLCAwLCAwLjc1KTtcbn1cblxuLnN1Z2dlc3Rpb25zID4gbGkge1xuICB0ZXh0LWFsaWduOiBsZWZ0O1xuICBwYWRkaW5nOiA4cHggNnB4IDhweCAxMHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZWVlO1xuICBjdXJzb3I6IGRlZmF1bHQ7XG59XG5cbi5zdWdnZXN0aW9ucyA+IGxpOmxhc3QtY2hpbGQge1xuICBib3JkZXItYm90dG9tLWxlZnQtcmFkaXVzOiA0cHg7XG4gIGJvcmRlci1ib3R0b20tcmlnaHQtcmFkaXVzOiA0cHg7XG59XG5cbi5zdWdnZXN0aW9ucyA+IGxpOmhvdmVyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2JjZGNkYjtcbn1cblxuLmV2ZW50IHtcbiAgcGFkZGluZzogMTBweCAxMHB4IDM1cHg7XG4gIG1hcmdpbi1ib3R0b206IDEwcHg7XG4gIHRleHQtYWxpZ246IGxlZnQ7XG4gIGJvcmRlcjogMXJlbSBzb2xpZCAjRUVCM0IzO1xuICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGNvbG9yOndoaXRlO1xufVxuXG4uZXZlbnQgPiAudGl0bGUge1xuICBmb250LXdlaWdodDogNjAwO1xufVxuXG4uZGV0YWlscy1idG4ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHJpZ2h0OiA1cHg7XG4gIGJvdHRvbTogNXB4O1xuICBwYWRkaW5nOiA1cHggOHB4O1xuICBib3JkZXItcmFkaXVzOiA0cHg7XG4gIG91dGxpbmU6IG5vbmU7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cblxuLm5hbWUge1xuICBmb250LXNpemU6IDE4cHg7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG59XG5cbi5ncm91cC1uYW1lIHtcbiAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgZm9udC1zaXplOiAxNHB4O1xufVxuXG4uZ29pbmcsXG4udmlzaWJpbGl0eSB7XG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcbn1cblxuLmRlc2NyaXB0aW9uIHtcbiAgb3ZlcmZsb3cteDogaGlkZGVuO1xufVxuXG4ubnVtYmVyT2ZFdmVudHMge1xuICB3aWR0aDogMzAwcHg7XG4gIG1hcmdpbjogMjBweCBhdXRvO1xuICBoZWlnaHQ6IDVyZW07XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmJ1dHRvbi13cmFwcGVyIHtcbiAgZGlzcGxheTogZ3JpZDtcbiAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiAxZnIgMWZyIDFmcjtcbiAgZ3JpZC1nYXA6IDIwcHg7XG4gIHBhZGRpbmc6IDIwcHg7XG4gIGZvbnQtZmFtaWx5OiBzYW5zLXNlcmlmO1xufVxuXG4ubGlua0NvbG9yOmEge1xuICBjb2xvcjogMDBGRkZGICFpbXBvcnRhbnRcbn1cblxuLmRhdGEtdmlzLXdyYXBwZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xufVxuLmRhdGEtdmlzLXdyYXBwZXIgLnJlY2hhcnRzLXJlc3BvbnNpdmUtY29udGFpbmVyIHtcbiAgbWluLXdpZHRoOiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xufVxuLnJlY2hhcnRzLXN1cmZhY2Uge1xuICBvdmVyZmxvdzogdmlzaWJsZTtcbn1cblxuLmxvZ2luLWJ1dHRvbiB7XG4gIGNvbG9yOiAjNDk0OTQ5O1xuICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gIGJhY2tncm91bmQ6ICNmZmZmZmY7XG4gIHBhZGRpbmc6IDIwcHg7XG4gIGJvcmRlcjogNHB4IHNvbGlkICM0OTQ5NDk7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdHJhbnNpdGlvbjogYWxsIDAuNHMgZWFzZSAwcztcbiAgbWluLXdpZHRoOiAxMHJlbTtcbiAgbWFyZ2luOiAxcmVtO1xufVxuXG4uZ29vZ2xlLWJ0biB7XG4gIHdpZHRoOiAxODRweDtcbiAgaGVpZ2h0OiA0MnB4O1xuICBtYXJnaW46IDFyZW07XG4gIGJhY2tncm91bmQtY29sb3I6ICM0Mjg1ZjQ7XG4gIGJvcmRlci1yYWRpdXM6IDJweDtcbiAgYm94LXNoYWRvdzogMCAzcHggNHB4IDAgcmdiYSgwLCAwLCAwLCAwLjI1KTtcbn1cbi5nb29nbGUtYnRuOmhvdmVyIHtcbiAgYm94LXNoYWRvdzogMCAwIDZweCAjNDI4NWY0O1xufVxuLmdvb2dsZS1idG46YWN0aXZlIHtcbiAgYmFja2dyb3VuZDogIzE2NjlmMjtcbn1cbi5nb29nbGUtaWNvbi13cmFwcGVyIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBtYXJnaW4tdG9wOiAxcHg7XG4gIG1hcmdpbi1sZWZ0OiAxcHg7XG4gIHdpZHRoOiA0MHB4O1xuICBoZWlnaHQ6IDQwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDJweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcbn1cbi5nb29nbGUtaWNvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgbWFyZ2luLXRvcDogMTFweDtcbiAgbWFyZ2luLWxlZnQ6IC04cHg7XG4gIHdpZHRoOiAxOHB4O1xuICBoZWlnaHQ6IDE4cHg7XG59XG4uYnRuLXRleHQge1xuICBmbG9hdDogcmlnaHQ7XG4gIG1hcmdpbjogMTFweCAxMXB4IDAgMDtcbiAgY29sb3I6ICNmZmY7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgbGV0dGVyLXNwYWNpbmc6IDAuMnB4O1xuICBmb250LWZhbWlseTogXCJSb2JvdG9cIjtcbn1cblxuXG5cbkBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1pbi13aWR0aDogOTkycHgpIHtcbiAgLmRhdGEtdmlzLXdyYXBwZXIge1xuICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIH1cbiAgLmRhdGEtdmlzLXdyYXBwZXIgLnJlY2hhcnRzLXJlc3BvbnNpdmUtY29udGFpbmVyIHtcbiAgICBmbGV4LWJhc2lzOiA1MCU7XG4gICAgbWF4LXdpZHRoOiA1MCU7XG4gICAgbWluLXdpZHRoOiBhdXRvO1xuICAgIG1hcmdpbjogMCBhdXRvO1xuICB9XG59Il0sInNvdXJjZVJvb3QiOiIifQ== */</style><style>/* Make clicks pass-through */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: rgb(22, 170, 128);
+
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 10px;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+  opacity: 1.0;
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031;
+  top: 15px;
+  right: 15px;
+}
+
+#nprogress .spinner-icon {
+  width: 2rem;
+  height: 2rem;
+  box-sizing: border-box;
+
+  border: solid 2px transparent;
+  border-top-color: rgb(229, 242, 237);
+  border-left-color: rgb(22, 170, 128);
+  border-radius: 50%;
+  animation: nprogress-spinner 400ms linear infinite;
+}
+
+.nprogress-custom-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  position: absolute;
+}
+@keyframes nprogress-spinner {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9ucHJvZ3Jlc3MuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDZCQUE2QjtBQUM3QjtFQUNFLG9CQUFvQjtBQUN0Qjs7QUFFQTtFQUNFLDZCQUE2Qjs7RUFFN0IsZUFBZTtFQUNmLGFBQWE7RUFDYixNQUFNO0VBQ04sT0FBTzs7RUFFUCxXQUFXO0VBQ1gsWUFBWTtBQUNkOztBQUVBLHNCQUFzQjtBQUN0QjtFQUNFLGNBQWM7RUFDZCxrQkFBa0I7RUFDbEIsVUFBVTtFQUNWLFlBQVk7RUFDWixZQUFZO0VBQ1osdUNBQXVDO0VBQ3ZDLFlBQVk7RUFJSiw0Q0FBNEM7QUFDdEQ7O0FBRUEsMkNBQTJDO0FBQzNDO0VBQ0UsY0FBYztFQUNkLGVBQWU7RUFDZixhQUFhO0VBQ2IsU0FBUztFQUNULFdBQVc7QUFDYjs7QUFFQTtFQUNFLFdBQVc7RUFDWCxZQUFZO0VBQ1osc0JBQXNCOztFQUV0Qiw2QkFBNkI7RUFDN0Isb0NBQW9DO0VBQ3BDLG9DQUFvQztFQUNwQyxrQkFBa0I7RUFHVixrREFBa0Q7QUFDNUQ7O0FBRUE7RUFDRSxnQkFBZ0I7RUFDaEIsa0JBQWtCO0FBQ3BCOztBQUVBOztFQUVFLGtCQUFrQjtBQUNwQjtBQU1BO0VBQ0UsT0FBTyx1QkFBdUIsRUFBRTtFQUNoQyxPQUFPLHlCQUF5QixFQUFFO0FBQ3BDIiwic291cmNlc0NvbnRlbnQiOlsiLyogTWFrZSBjbGlja3MgcGFzcy10aHJvdWdoICovXG4jbnByb2dyZXNzIHtcbiAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG59XG5cbiNucHJvZ3Jlc3MgLmJhciB7XG4gIGJhY2tncm91bmQ6IHJnYigyMiwgMTcwLCAxMjgpO1xuXG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgei1pbmRleDogMTAzMTtcbiAgdG9wOiAwO1xuICBsZWZ0OiAwO1xuXG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwcHg7XG59XG5cbi8qIEZhbmN5IGJsdXIgZWZmZWN0ICovXG4jbnByb2dyZXNzIC5wZWcge1xuICBkaXNwbGF5OiBibG9jaztcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICByaWdodDogMHB4O1xuICB3aWR0aDogMTAwcHg7XG4gIGhlaWdodDogMTAwJTtcbiAgYm94LXNoYWRvdzogMCAwIDEwcHggIzI5ZCwgMCAwIDVweCAjMjlkO1xuICBvcGFjaXR5OiAxLjA7XG5cbiAgLXdlYmtpdC10cmFuc2Zvcm06IHJvdGF0ZSgzZGVnKSB0cmFuc2xhdGUoMHB4LCAtNHB4KTtcbiAgICAgIC1tcy10cmFuc2Zvcm06IHJvdGF0ZSgzZGVnKSB0cmFuc2xhdGUoMHB4LCAtNHB4KTtcbiAgICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZSgzZGVnKSB0cmFuc2xhdGUoMHB4LCAtNHB4KTtcbn1cblxuLyogUmVtb3ZlIHRoZXNlIHRvIGdldCByaWQgb2YgdGhlIHNwaW5uZXIgKi9cbiNucHJvZ3Jlc3MgLnNwaW5uZXIge1xuICBkaXNwbGF5OiBibG9jaztcbiAgcG9zaXRpb246IGZpeGVkO1xuICB6LWluZGV4OiAxMDMxO1xuICB0b3A6IDE1cHg7XG4gIHJpZ2h0OiAxNXB4O1xufVxuXG4jbnByb2dyZXNzIC5zcGlubmVyLWljb24ge1xuICB3aWR0aDogMnJlbTtcbiAgaGVpZ2h0OiAycmVtO1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuXG4gIGJvcmRlcjogc29saWQgMnB4IHRyYW5zcGFyZW50O1xuICBib3JkZXItdG9wLWNvbG9yOiByZ2IoMjI5LCAyNDIsIDIzNyk7XG4gIGJvcmRlci1sZWZ0LWNvbG9yOiByZ2IoMjIsIDE3MCwgMTI4KTtcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xuXG4gIC13ZWJraXQtYW5pbWF0aW9uOiBucHJvZ3Jlc3Mtc3Bpbm5lciA0MDBtcyBsaW5lYXIgaW5maW5pdGU7XG4gICAgICAgICAgYW5pbWF0aW9uOiBucHJvZ3Jlc3Mtc3Bpbm5lciA0MDBtcyBsaW5lYXIgaW5maW5pdGU7XG59XG5cbi5ucHJvZ3Jlc3MtY3VzdG9tLXBhcmVudCB7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbn1cblxuLm5wcm9ncmVzcy1jdXN0b20tcGFyZW50ICNucHJvZ3Jlc3MgLnNwaW5uZXIsXG4ubnByb2dyZXNzLWN1c3RvbS1wYXJlbnQgI25wcm9ncmVzcyAuYmFyIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xufVxuXG5ALXdlYmtpdC1rZXlmcmFtZXMgbnByb2dyZXNzLXNwaW5uZXIge1xuICAwJSAgIHsgLXdlYmtpdC10cmFuc2Zvcm06IHJvdGF0ZSgwZGVnKTsgfVxuICAxMDAlIHsgLXdlYmtpdC10cmFuc2Zvcm06IHJvdGF0ZSgzNjBkZWcpOyB9XG59XG5Aa2V5ZnJhbWVzIG5wcm9ncmVzcy1zcGlubmVyIHtcbiAgMCUgICB7IHRyYW5zZm9ybTogcm90YXRlKDBkZWcpOyB9XG4gIDEwMCUgeyB0cmFuc2Zvcm06IHJvdGF0ZSgzNjBkZWcpOyB9XG59XG5cbiJdLCJzb3VyY2VSb290IjoiIn0= */</style><style>.WelcomeScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: #B85353;
+    color: white;
+    }
+    .login-button {
+    color: #494949;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #ffffff;
+    border: 4px solid #494949;
+    display: inline-block;
+    transition: all 0.4s ease 0s;
+    min-width: 10rem;
+    margin: 1rem;
+    }
+    .google-btn {
+    width: 184px;
+    height: 42px;
+    margin: 1rem;
+    background-color: #4285f4;
+    border-radius: 2px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+    }
+    .google-btn:hover {
+    box-shadow: 0 0 6px #4285f4;
+    }
+
+    .google-btn:active {
+    background: #1669f2;
+    }
+    .google-icon-wrapper {
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 1px;
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    background-color: #fff;
+    }
+    .google-icon {
+    position: absolute;
+    margin-top: 11px;
+    margin-left: -8px;
+    width: 18px;
+    height: 18px;
+    }
+    .btn-text {
+    float: right;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    font-family: "Roboto";
+    background-color: #4285f4;
+    width: 80%;
+    height: 100%;
+    text-align: center;
+    }
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9XZWxjb21lU2NyZWVuLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGVBQWU7SUFDZixXQUFXO0lBQ1gsWUFBWTtJQUNaLE1BQU07SUFDTixtQkFBbUI7SUFDbkIsWUFBWTtJQUNaO0lBQ0E7SUFDQSxjQUFjO0lBQ2QseUJBQXlCO0lBQ3pCLHFCQUFxQjtJQUNyQixtQkFBbUI7SUFDbkIseUJBQXlCO0lBQ3pCLHFCQUFxQjtJQUNyQiw0QkFBNEI7SUFDNUIsZ0JBQWdCO0lBQ2hCLFlBQVk7SUFDWjtJQUNBO0lBQ0EsWUFBWTtJQUNaLFlBQVk7SUFDWixZQUFZO0lBQ1oseUJBQXlCO0lBQ3pCLGtCQUFrQjtJQUNsQiwyQ0FBMkM7SUFDM0M7SUFDQTtJQUNBLDJCQUEyQjtJQUMzQjs7SUFFQTtJQUNBLG1CQUFtQjtJQUNuQjtJQUNBO0lBQ0Esa0JBQWtCO0lBQ2xCLGVBQWU7SUFDZixnQkFBZ0I7SUFDaEIsV0FBVztJQUNYLFlBQVk7SUFDWixrQkFBa0I7SUFDbEIsc0JBQXNCO0lBQ3RCO0lBQ0E7SUFDQSxrQkFBa0I7SUFDbEIsZ0JBQWdCO0lBQ2hCLGlCQUFpQjtJQUNqQixXQUFXO0lBQ1gsWUFBWTtJQUNaO0lBQ0E7SUFDQSxZQUFZO0lBQ1osV0FBVztJQUNYLGVBQWU7SUFDZixxQkFBcUI7SUFDckIscUJBQXFCO0lBQ3JCLHlCQUF5QjtJQUN6QixVQUFVO0lBQ1YsWUFBWTtJQUNaLGtCQUFrQjtJQUNsQiIsInNvdXJjZXNDb250ZW50IjpbIi5XZWxjb21lU2NyZWVuIHtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIHRvcDogMDtcbiAgICBiYWNrZ3JvdW5kOiAjQjg1MzUzO1xuICAgIGNvbG9yOiB3aGl0ZTtcbiAgICB9XG4gICAgLmxvZ2luLWJ1dHRvbiB7XG4gICAgY29sb3I6ICM0OTQ5NDk7XG4gICAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gICAgYmFja2dyb3VuZDogI2ZmZmZmZjtcbiAgICBib3JkZXI6IDRweCBzb2xpZCAjNDk0OTQ5O1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgICB0cmFuc2l0aW9uOiBhbGwgMC40cyBlYXNlIDBzO1xuICAgIG1pbi13aWR0aDogMTByZW07XG4gICAgbWFyZ2luOiAxcmVtO1xuICAgIH1cbiAgICAuZ29vZ2xlLWJ0biB7XG4gICAgd2lkdGg6IDE4NHB4O1xuICAgIGhlaWdodDogNDJweDtcbiAgICBtYXJnaW46IDFyZW07XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzQyODVmNDtcbiAgICBib3JkZXItcmFkaXVzOiAycHg7XG4gICAgYm94LXNoYWRvdzogMCAzcHggNHB4IDAgcmdiYSgwLCAwLCAwLCAwLjI1KTtcbiAgICB9XG4gICAgLmdvb2dsZS1idG46aG92ZXIge1xuICAgIGJveC1zaGFkb3c6IDAgMCA2cHggIzQyODVmNDtcbiAgICB9XG5cbiAgICAuZ29vZ2xlLWJ0bjphY3RpdmUge1xuICAgIGJhY2tncm91bmQ6ICMxNjY5ZjI7XG4gICAgfVxuICAgIC5nb29nbGUtaWNvbi13cmFwcGVyIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgbWFyZ2luLXRvcDogMXB4O1xuICAgIG1hcmdpbi1sZWZ0OiAxcHg7XG4gICAgd2lkdGg6IDQwcHg7XG4gICAgaGVpZ2h0OiA0MHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDJweDtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xuICAgIH1cbiAgICAuZ29vZ2xlLWljb24ge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBtYXJnaW4tdG9wOiAxMXB4O1xuICAgIG1hcmdpbi1sZWZ0OiAtOHB4O1xuICAgIHdpZHRoOiAxOHB4O1xuICAgIGhlaWdodDogMThweDtcbiAgICB9XG4gICAgLmJ0bi10ZXh0IHtcbiAgICBmbG9hdDogcmlnaHQ7XG4gICAgY29sb3I6ICNmZmY7XG4gICAgZm9udC1zaXplOiAxNHB4O1xuICAgIGxldHRlci1zcGFjaW5nOiAwLjJweDtcbiAgICBmb250LWZhbWlseTogXCJSb2JvdG9cIjtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNDI4NWY0O1xuICAgIHdpZHRoOiA4MCU7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICB9Il0sInNvdXJjZVJvb3QiOiIifQ== */</style><style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCBc4EsA.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBxc4EsA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCxc4EsA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fChc4EsA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu72xKOzY.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7mxKOzY.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4WxKOzY.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7WxKOzY.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7GxKOzY.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCRc4EsA.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fABc4EsA.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCBc4EsA.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBxc4EsA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCxc4EsA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fChc4EsA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCRc4EsA.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfABc4EsA.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCBc4EsA.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBxc4EsA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCxc4EsA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfChc4EsA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style><style>.ucbzx-button-wrapper {
+    position: absolute !important;
+    z-index: 1000 !important;
+    top: 0 !important;
+    right: 0 !important;
+}
+
+.ucbzx-button {
+    display: block;
+    border: none !important;
+    /* outline: none !important; */
+    background: #3c3c54 !important;
+    padding: 0 !important;
+    border-radius: 5px;
+    width: 36px !important;
+    height: 36px !important;
+}
+
+.ucbzx-button:active {
+    border: none !important;
+}
+
+.ucbzx-button:disabled {
+    cursor: default !important;
+}
+
+.ucbzx-download-img {
+    display: block !important;
+    width: 36px !important;
+    height: 36px !important;
+    cursor: pointer !important;
+    margin: 0 !important;
+}
+
+.ucbzx-hide {
+    display: none !important;
+}
+
+.ucbzx-loader {
+    display: block;
+    box-sizing: content-box !important;
+    width: 30px !important;
+    height: 30px !important;
+    padding: 3px !important;
+    animation: rotate 1s linear infinite;
+    margin: 0 !important;
+}
+
+/*
+    RESOLUTIONS CHOICE
+*/
+
+.ucbzx-resolutions-list {
+    position: absolute !important;
+    top: 36px !important;
+    right: 0 !important;
+    background: #3c3c54 !important;
+    color: #dbdbdb !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 14px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.ucbzx-resolutions-list li {
+    margin: 4px !important;
+    padding: 0 !important;
+    font-weight: bold !important;
+    white-space: nowrap !important;
+    width: 130px !important;
+    height: 30px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.ucbzx-list-item-tickbox {
+    width: 20px !important;
+    height: 20px !important;
+    background: rgba(255, 255, 255, 0.219) !important;
+    /* border-radius: 5px !important; */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    /* font-size: 17px !important; */
+    /* border: 1px solid rgba(255, 255, 255, 0.835) !important; */
+    cursor: pointer !important;
+    margin-left: 4px !important;
+}
+
+.ucbzx-resolutions-list > li::before {
+    display: none;
+}
+
+.ucbzx-list-item-tickbox:not(.ucbzx-list-item-tickbox-checked):hover {
+    background: rgba(255, 255, 255, 0.37) !important;
+}
+
+.ucbzx-list-item-tickbox.ucbzx-list-item-tickbox-checked {
+    cursor: default !important;
+}
+
+.ucbzx-list-item-tickbox-checked::after {
+    content: "\2713" !important;
+    color: white !important;
+}
+
+.ucbzx-list-item-text {
+    /* border-radius: 5px !important; */
+    flex-grow: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    height: 100% !important;
+    margin-left: 10px !important;
+}
+
+.ucbzx-list-item-text:hover {
+    background: rgba(255, 255, 255, 0.37) !important;
+    color: white !important;
+}
+
+/* account for the fact that we got rid of the tickbox there */
+.ucbzx-resolutions-list li[data-type="captions"] .ucbzx-list-item-text {
+    margin-left: 34px !important;
+    font-style: italic;
+}
+
+/*
+    MISC
+*/
+
+.ucbzx-arrow-container {
+    background: none !important;
+    position: absolute !important;
+    top: 36px !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-left: 18px solid transparent !important;
+    border-right: 18px solid transparent !important;
+    border-top: 18px solid #3c3c54 !important;
+    /* border-bottom: none !important; */
+    cursor: pointer !important;
+}
+
+.ucbzx-arrow-container::after {
+    position: absolute !important;
+    top: -18px !important;
+    left: -4px !important;
+    content: "" !important;
+    border: 1px solid #dbdbdb !important;
+    border-width: 0 3px 3px 0 !important;
+    display: inline-block !important;
+    padding: 3px !important;
+    transform: rotate(45deg);
+}
+
+.ucbzx-button:focus,
+.ucbzx-arrow-container:focus,
+.ucbzx-resolutions-list:focus,
+.ucbzx-list-item-tickbox:focus,
+.ucbzx-list-item-text:focus {
+    outline: 1px solid white !important;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*
+    RESET STYLES
+*/
+.ucbzx-button-wrapper button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    outline: none;
+    line-height: normal;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-appearance: none;
+}
+
+.ucbzx-button-wrapper li,
+.ucbzx-button-wrapper li * {
+    margin: 0;
+    font: inherit;
+    font-style: inherit;
+    font-size: inherit;
+}</style></head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"><div class="App main-view justify-content-md-center container"><div class="row"><div class="col"><h1>Meet App</h1><p>Search for web development events in your city!</p></div></div><div class="row"><div class="col-md-4"><div class="alert"><p style="color: yellow; font-size: 16px;"></p></div></div><div class="mt-3 col-md-4"><div class="CitySearch"><input type="text" class="city" placeholder="Choose your city" value=""><ul class="suggestions" style="display: none;"><li><b>See all cities</b></li></ul><div class="alert"><p style="color: lightblue; font-size: 16px;"></p></div></div></div><div class="col-md-4"><div class="numberOfEvents"><input type="number" class="number-of-events" value="32"><div class="alert"><p style="color: white; font-size: 16px;"></p></div></div></div></div></div><div class="container"><div class="row"><div class="col"><div class="recharts-wrapper" style="position: relative; cursor: default; width: 800px; height: 400px;"><svg class="recharts-surface" width="800" height="400" viewBox="0 0 800 400" version="1.1"><defs><clippath id="recharts2-clip"><rect x="80" y="20" height="330" width="700"></rect></clippath></defs><g class="recharts-cartesian-grid"><g class="recharts-cartesian-grid-horizontal"><line stroke="#ccc" fill="none" x="80" y="20" width="700" height="330" offset="[object Object]" x1="80" y1="20" x2="780" y2="20"></line><line stroke="#ccc" fill="none" x="80" y="20" width="700" height="330" offset="[object Object]" x1="80" y1="350" x2="780" y2="350"></line></g><g class="recharts-cartesian-grid-vertical"><line stroke="#ccc" fill="none" x="80" y="20" width="700" height="330" offset="[object Object]" x1="255" y1="20" x2="255" y2="350"></line><line stroke="#ccc" fill="none" x="80" y="20" width="700" height="330" offset="[object Object]" x1="605" y1="20" x2="605" y2="350"></line><line stroke="#ccc" fill="none" x="80" y="20" width="700" height="330" offset="[object Object]" x1="80" y1="20" x2="80" y2="350"></line><line stroke="#ccc" fill="none" x="80" y="20" width="700" height="330" offset="[object Object]" x1="780" y1="20" x2="780" y2="350"></line></g></g><g class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis"><line type="category" name="city" orientation="bottom" width="700" height="30" x="80" y="350" class="recharts-cartesian-axis-line" stroke="#666" fill="none" x1="80" y1="350" x2="780" y2="350"></line><g class="recharts-cartesian-axis-ticks"><g class="recharts-layer recharts-cartesian-axis-tick"><line type="category" name="city" orientation="bottom" width="700" height="30" x="80" y="350" class="recharts-cartesian-axis-tick-line" stroke="#666" fill="none" x1="255" y1="356" x2="255" y2="350"></line><text type="category" name="city" orientation="bottom" width="700" height="30" x="255" y="358" stroke="none" fill="#666" class="recharts-text recharts-cartesian-axis-tick-value" text-anchor="middle"><tspan x="255" dy="0.71em">0</tspan></text></g><g class="recharts-layer recharts-cartesian-axis-tick"><line type="category" name="city" orientation="bottom" width="700" height="30" x="80" y="350" class="recharts-cartesian-axis-tick-line" stroke="#666" fill="none" x1="605" y1="356" x2="605" y2="350"></line><text type="category" name="city" orientation="bottom" width="700" height="30" x="605" y="358" stroke="none" fill="#666" class="recharts-text recharts-cartesian-axis-tick-value" text-anchor="middle"><tspan x="605" dy="0.71em">auto</tspan></text></g></g></g><g class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"><line type="number" name="number of events" orientation="left" width="60" height="330" x="20" y="20" class="recharts-cartesian-axis-line" stroke="#666" fill="none" x1="80" y1="20" x2="80" y2="350"></line><g class="recharts-cartesian-axis-ticks"></g></g></svg><div class="recharts-tooltip-wrapper recharts-tooltip-wrapper-right recharts-tooltip-wrapper-bottom" style="pointer-events: none; visibility: hidden; position: absolute; top: 0px; left: 0px; transform: translate(80px, 20px);"><div class="recharts-default-tooltip" style="margin: 0px; padding: 10px; background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); white-space: nowrap;"><p class="recharts-tooltip-label" style="margin: 0px;"></p></div></div></div></div></div></div><div class="container-fluid"><div class="justify-content-md-center row"><div class="col-md-8 col-12"><div class="EventList row"><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">React is Fun</div><div class="startDateTime">2022-05-20T14:00:00+02:00</div><div class="location">Berlin, Germany</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div><div class="align-items-space-around d-flex mb-3 col-lg-3 col-md-6"><div><div><div class="event"><div class="title">Learn JavaScript</div><div class="startDateTime">2022-05-26T16:00:00+02:00</div><div class="location">London, UK</div><button class="show-details">Show Details</button></div></div></div></div></div></div></div></div></div>
+  
+
+<span id="recharts_measurement_span" aria-hidden="true" style="position: absolute; top: -20000px; left: 0px; padding: 0px; margin: 0px; border: none; white-space: pre;">&nbsp;</span></body></html>
