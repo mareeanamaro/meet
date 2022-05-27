@@ -99,8 +99,6 @@ class App extends Component {
 
   render() {
 
-    console.log(this.state);
-
     // if (this.state.showWelcomeScreen === undefined) return <Container
     // className="App" />
    

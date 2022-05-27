@@ -24,14 +24,14 @@ const EventGenre = ({ events }) => {
         };
         setData(() => getData());
       }, [events]);
-
+      
     return (
         <ResponsiveContainer height={400}>
-            <PieChart height={400} width={"50%"}>
+            <PieChart height={400}>
                 <Pie
                     data={data}
-                    cx={200}
-                    cy={200}
+                    cx={'50%'}
+                    cy={'50%'}
                     labelLine={false}
                     outerRadius={80}
                     fill='#8884d8'
