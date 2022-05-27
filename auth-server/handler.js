@@ -13,11 +13,8 @@ const credentials = {
   token_uri: 'https://oauth2.googleapis.com/token',
   auth_provider_x509_cert_url: 'https://www.googleapis.com/oauth2/v1/certs',
   redirect_uris: ['https://mareeanamaro.github.io/meet'],
-  javascript_origins: ['https://mareeanamaro.github.io/', 'http://localhost:3000'],
+  javascript_origins: ['https://mareeanamaro.github.io/', 'http://localhost:300'],
 };
-
-
-
 const { client_id, client_secret, redirect_uris, calendar_id } = credentials;
 const oAuth2Client = new OAuth2(
   client_id,
@@ -68,7 +65,7 @@ return new Promise((resolve, reject) => {
         "Access-Control-Allow-Origin": "*"
       },
       body: JSON.stringify(token)
-    };
+    }
   })
   .catch((err) => {
     console.error(err);
@@ -78,9 +75,9 @@ return new Promise((resolve, reject) => {
         "Access-Control-Allow-Origin": "*"
       },
       body: JSON.stringify(err)
-    };
-  });
-};
+    }
+  })
+}
 
 module.exports.getCalendarEvents = async (event) => {
 
@@ -97,40 +94,41 @@ module.exports.getCalendarEvents = async (event) => {
   // set the token as our credentials
   oAuth2Client.setCredentials({ access_token });
 
-  try {
-    const results = await new Promise((resolve, reject) => {
-      calendar.events.list(
-        {
-          calendarId: calendar_id,
-          auth: oAuth2Client,
-          timeMin: new Date().toISOString(),
-          singleEvents: true,
-          orderBy: "startTime",
-        },
-        (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
+  return new Promise ((resolve, reject) => {
+    calendar.events.list(
+      {
+        calendarId: calendar_id,
+        auth: oAuth2Client,
+        timeMin: new Date().toISOString(),
+        singleEvents: true,
+        orderBy: "startTime",
+      },
+      (error, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(response);
         }
-      );
-    });
-    return {
-      statusCode: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "*"
-      },
-      body: JSON.stringify({ events: results.data.items })
-    };
-  } catch (err) {
-    console.error(err);
-    return {
-      statusCode: 500,
-      headers: {
-        "Access-Control-Allow-Origin": "*"
-      },
-      body: JSON.stringify(err)
-    };
-  }
+      }
+    );
+  })
+    .then((results) => {
+      return {
+        statusCode: 200,
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        },
+        body: JSON.stringify({ events: results.data.items})
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      return {
+        statusCode: 500,
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        },
+        body: JSON.stringify(err)
+      }
+    })
 }

@@ -23,6 +23,17 @@ h1 {
   font-size: 3rem;
 }
 
+h3 {
+  color: #B85353;
+  text-shadow: 1px 1px 1px rgba(246, 240, 243, 0.71);
+  font-size: 1.5rem;
+}
+
+.eventsListTitle {
+  color: white;
+  text-shadow: 1px 1px 1px #EEB3B3;
+}
+
 ul {
   padding: 0;
   list-style: none;
@@ -31,6 +42,15 @@ ul {
 p {
   margin: 5px 0;
   color: white;
+}
+
+.charts {
+  background-color: white;
+  margin: 20px 0px;
+  text-align: left;
+  border: 1rem solid #EEB3B3;
+  border-radius: 10px;
+  
 }
 
 .display-none {
