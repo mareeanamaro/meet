@@ -29,16 +29,20 @@ A server-less PWA app built using a TDD approach for Achievement 4 of my CareerF
 
 ## How to Use
 
-* Clone or download repository ...
-* `git clone https://github.com/mareeanamaro/meet.git`
+Clone or download repository ...
 
-* Connect to your github pages
+`git clone https://github.com/mareeanamaro/meet.git`
 
-* Follow the instructions provided by github: https://pages.github.com
-* Edit homepage address in package.json to fit to your github account
+Connect to your github pages
 
-* To run app on localhost:
-* `npm run start`
+Follow the instructions provided by github: https://pages.github.com
 
-* To push changes to github pages:
-* `npm run deploy`
+Edit homepage address in package.json to fit to your github account
+
+To run app on localhost:
+
+`npm run start`
+
+To push changes to github pages:
+
+`npm run deploy`
