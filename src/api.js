@@ -47,17 +47,19 @@ export const getEvents = async () => {
 
     const token = await getAccessToken();
 
-    if(token) {
-        removeQuery();
-        const url = 'https://n7s29x0hj3.execute-api.eu-west-2.amazonaws.com/dev/api/get-events' + '/' + token;
-        const result = await axios.get(url);
-        if (result.data) {
-            var locations = extractLocations(result.data.events);
-            localStorage.setItem('lastEvents', JSON.stringify(result.data));
-            localStorage.setItem('locations', JSON.stringify(locations));
+    if(navigator.onLine) {
+        if(token) {
+            removeQuery();
+            const url = 'https://n7s29x0hj3.execute-api.eu-west-2.amazonaws.com/dev/api/get-events' + '/' + token;
+            const result = await axios.get(url);
+            if (result.data) {
+                var locations = extractLocations(result.data.events);
+                localStorage.setItem('lastEvents', JSON.stringify(result.data));
+                localStorage.setItem('locations', JSON.stringify(locations));
+            }
+            nprogress.done();
+            return result.data.events;
         }
-        nprogress.done();
-        return result.data.events;
     }
 };
 

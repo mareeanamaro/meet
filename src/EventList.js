@@ -17,8 +17,6 @@ class EventList extends Component {
           </Row>
         );
       }
-      
-
 }
 
 export default EventList;
